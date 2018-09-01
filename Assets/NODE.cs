@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NODE : {
+public class Node : {
 
 	// Use this for initialization
 	void Start () {
