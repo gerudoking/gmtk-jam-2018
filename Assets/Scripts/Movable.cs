@@ -7,7 +7,7 @@ public class Movable : MonoBehaviour {
     private bool dragging = false;
     private Vector3 mVelocity = Vector3.zero;
     private float mMovementSmoothing = .05f;
-    private float moveRate = 500.0f;
+    private float moveRate = 2000.0f;
     private Vector3 stoppedPos;
     private bool sliding = false;
 
