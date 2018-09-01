@@ -12,9 +12,11 @@ public class GeneralController : MonoBehaviour {
     private Text waveTime;
     private int score = 0;
 
-    private bool onWave = false;
+    private bool onWave = true;
     private Timer waveInterval;
     private int waveCount;
+    private Pathfinding pf;
+
 
     public List<GameObject> waveEnemies;
 
@@ -35,7 +37,9 @@ public class GeneralController : MonoBehaviour {
         waveEnemies = new List<GameObject>();
         scoreText.text = "Score: 0";
         waveInterval = new Timer(Timer.TYPE.DECRESCENTE, 10.0f);
-	}
+        pf = GetComponent<Pathfinding>();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -61,13 +65,20 @@ public class GeneralController : MonoBehaviour {
             StartWave();
         }
 
-        //TESTE!
-        /*if (Input.GetKeyDown(KeyCode.E)) {
-            
-        }*/
+        //Pathfinding dos inimigos
+        if (pf.recalculatePaths) {
+            foreach (GameObject e in waveEnemies) {
+                EnemyController ec = e.GetComponent<EnemyController>();
+
+                ec.course = pf.FindPath(ec.transform.position, pf.target.position);
+            }
+
+            pf.recalculatePaths = false;
+        }
 	}
 
     private void StartWave() {
         print("Wave!");
+        pf.recalculatePaths = true;
     }
 }

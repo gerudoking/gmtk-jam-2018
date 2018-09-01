@@ -122,6 +122,8 @@ GameObject:
   m_Component:
   - component: {fileID: 137810623}
   - component: {fileID: 137810624}
+  - component: {fileID: 137810625}
+  - component: {fileID: 137810626}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -157,6 +159,35 @@ MonoBehaviour:
   scoreText: {fileID: 1079131529}
   waveTime: {fileID: 156104534}
   waveEnemies: []
+--- !u!114 &137810625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 137810622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42c09e0a6133f246bbdc38d4a1785e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unwalkableMask:
+    serializedVersion: 2
+    m_Bits: 256
+  gridWorldSize: {x: 50, y: 50}
+  nodeRadius: 0.5
+--- !u!114 &137810626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 137810622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df6abeca59d0c704584abd955fd588b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1217369744}
+  recalculatePaths: 0
 --- !u!1 &156104532
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,7 +274,7 @@ GameObject:
   - component: {fileID: 496106138}
   - component: {fileID: 496106137}
   - component: {fileID: 496106140}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TestBlock (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -468,7 +499,7 @@ GameObject:
   - component: {fileID: 575763555}
   - component: {fileID: 575763554}
   - component: {fileID: 575763557}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TestBlock (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -673,7 +704,7 @@ GameObject:
   - component: {fileID: 924685185}
   - component: {fileID: 924685184}
   - component: {fileID: 924685187}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TestBlock (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -896,6 +927,10 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1122707018364832, guid: b1a81fa6430586f458e98655dff24d86, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b1a81fa6430586f458e98655dff24d86, type: 2}
   m_IsPrefabParent: 0
@@ -985,7 +1020,7 @@ GameObject:
   - component: {fileID: 1179388987}
   - component: {fileID: 1179388986}
   - component: {fileID: 1179388989}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TestBlock (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1232,7 +1267,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1217369743}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.83, y: -1.05, z: 0}
+  m_LocalPosition: {x: 0.83, y: -1.05, z: -1}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1351,7 +1386,7 @@ GameObject:
   - component: {fileID: 1257492306}
   - component: {fileID: 1257492305}
   - component: {fileID: 1257492308}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TestBlock (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1489,7 +1524,7 @@ GameObject:
   - component: {fileID: 1540181945}
   - component: {fileID: 1540181947}
   - component: {fileID: 1540181948}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14102,7 +14137,7 @@ GameObject:
   - component: {fileID: 1541830035}
   - component: {fileID: 1541830034}
   - component: {fileID: 1541830037}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TestBlock (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14240,7 +14275,7 @@ GameObject:
   - component: {fileID: 1781651723}
   - component: {fileID: 1781651722}
   - component: {fileID: 1781651725}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TestBlock (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
