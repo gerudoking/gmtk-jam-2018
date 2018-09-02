@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: b6b75567ad7883249a74ed2a5703b135
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 60
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Alterebro Pixel Font
+  fontNames:
+  - Alterebro Pixel Font
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c34fc6ec1f727174da516603e1b70130, type: 3}
+  - {fileID: 12800000, guid: fc6ad29e5c4596b44af69b03f6734ee1, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
