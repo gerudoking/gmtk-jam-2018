@@ -55,6 +55,8 @@ public class EnemyController : MonoBehaviour {
         }
         else {
             GetComponent<SpriteRenderer>().color = Color.white;
+            damageFading = false;
+            damageFade.Reset();
         }
 
         //Vida
@@ -73,8 +75,15 @@ public class EnemyController : MonoBehaviour {
             if (collision.gameObject.GetComponent<Movable>().sliding) {
                 hp--;
                 GetComponent<SpriteRenderer>().color = Color.red;
+                GetComponent<AudioSource>().Play();
                 damageFading = true;
             }
+        }
+
+        if(collision.gameObject.tag == "orb" && !damageFading) {
+            hp--;
+            GetComponent<SpriteRenderer>().color = Color.red;
+            damageFading = true;
         }
     }
 }

@@ -58,7 +58,7 @@ public class GeneralController : MonoBehaviour {
         else {
             waveTime.text = "Next wave in " + waveInterval.GetTime().ToString("n0") + " seconds";
         }
-        life.text = player.hp.ToString("n0");
+        life.text = player.hp.ToString("n1");
 
         //Controle de Waves
         if (waveEnemies.Count == 0 && onWave) {

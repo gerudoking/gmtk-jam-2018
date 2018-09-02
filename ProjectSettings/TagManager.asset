@@ -6,6 +6,7 @@ TagManager:
   tags:
   - slider
   - enemy
+  - orb
   layers:
   - Default
   - TransparentFX

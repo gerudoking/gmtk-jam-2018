@@ -13,9 +13,19 @@ public class Movable : MonoBehaviour {
 
     private void Start() {
         stoppedPos = transform.position;
+
+        int randomNumber = UnityEngine.Random.Range(0, 2);
+        if(randomNumber == 0) {
+            GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/pedra_0");
+        }
+        else{
+            GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/pedra_1");
+        }
     }
 
     private void Update() {
+        moveRate = GameObject.Find("Player").GetComponent<PlayerController>().psyMove;
+
         if (sliding == false) {
             transform.position = stoppedPos;
             GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;

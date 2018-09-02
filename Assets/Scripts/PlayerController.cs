@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
-    private float moveRate = 40.0f;
+    public float moveRate = 40.0f;
     private Vector3 mVelocity = Vector3.zero;
     private float mMovementSmoothing = .05f;
     private float horizontalMove = 0f;
@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour {
     public float hp = 5.0f;
     private Timer imunityClock;
     private bool immune = false;
+    public bool armored = false;
+
+    public float psyMove = 2000.0f;
 
     public Animator animator;
 
@@ -81,7 +84,10 @@ public class PlayerController : MonoBehaviour {
     private void OnCollisionStay2D(Collision2D collision) {
         print("collided");
         if (collision.gameObject.tag == "enemy" && !immune) {
-            hp--;
+            if (!armored)
+                hp--;
+            else
+                hp -= 0.5f;
             immune = true;
             imunityClock.Reset();
         }

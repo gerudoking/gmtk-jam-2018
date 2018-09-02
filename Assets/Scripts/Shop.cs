@@ -69,7 +69,8 @@ public class Shop : MonoBehaviour {
     				{
     					////Ação da compra de cada item
     					case 0:
-    						prices[sel] = -1; //Seta o preço pra -1, tornando-o incrompravel
+                            GameObject.Find("Player").GetComponent<PlayerController>().psyMove *= 1.5f;
+                            prices[sel] = -1; //Seta o preço pra -1, tornando-o incrompravel
     						break;
 
     					case 1:
@@ -78,14 +79,17 @@ public class Shop : MonoBehaviour {
     						break;
 
     					case 2:
-    						prices[sel] = -1; //Seta o preço pra -1, tornando-o incrompravel
+                            GameObject.Find("Player").GetComponent<PlayerController>().moveRate *= 1.5f;
+                            prices[sel] = -1; //Seta o preço pra -1, tornando-o incrompravel
     						break;
 
     					case 3:
+                            GameObject.Find("Player").transform.GetChild(0).gameObject.SetActive(true);
     						prices[sel] = -1; //Seta o preço pra -1, tornando-o incrompravel
     						break;
 
     					case 4:
+                            GameObject.Find("Player").GetComponent<PlayerController>().armored = true;
     						prices[sel] = -1; //Seta o preço pra -1, tornando-o incrompravel
     						break;
     				}
