@@ -34,6 +34,10 @@ public class EnemyController : MonoBehaviour {
                 moved = true;
             }*/
             transform.position = Vector3.MoveTowards(transform.position, course[0].worldPosition, moveRate * Time.fixedDeltaTime);
+            float xscl = transform.position.x - (Vector3.MoveTowards(transform.position, course[0].worldPosition, moveRate * Time.fixedDeltaTime)).x;
+            Vector3 theScale = transform.localScale;
+            theScale.x = -Mathf.Sign(xscl)*5.0f;;
+            transform.localScale = theScale;
 
             print(course[0].worldPosition);
             if (Vector3.Distance(transform.position, course[0].worldPosition) < 0.05f) {

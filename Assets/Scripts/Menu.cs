@@ -89,7 +89,7 @@ public class Menu : MonoBehaviour {
 	        ////Title
 	        GUI.skin.label.font = (Font)Resources.Load("FontTitle");
 	        GUI.contentColor = new Color( 253.0f/255.0f, 120.0f/255.0f, 2.0f/255.0f, 1.0f);
-	        GUI.Label(new Rect( Screen.width/2-400, 60, 400*2, 200), "Main Menu");
+	        GUI.Label(new Rect( Screen.width/2-400, 60, 400*2, 200), "ALIENS GO HOME");
 
 			GUI.skin.label.font = (Font)Resources.Load("Font1");
 

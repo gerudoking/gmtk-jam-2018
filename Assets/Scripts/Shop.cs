@@ -17,11 +17,11 @@ public class Shop : MonoBehaviour {
 
 	int[] prices = { 250, 50, 250, 500, 300};
 
-	string[,] options = { {"Psyboost", "Increase Attack Speed", "Textures/ShopIcon", "Textures/ShopIcon2"},
-	{"Life Flask", "Recover 1 HP", "Textures/ShopIcon", "Textures/ShopIcon2"},
-	{"Jet Boots", "Improve Movement Speed", "Textures/ShopIcon", "Textures/ShopIcon2"},
-	{"Mind Orb", "Alternate Protection and Attack", "Textures/ShopIcon", "Textures/ShopIcon2"},
-	{"Power Armor", "Reduce Damage Taken by Half", "Textures/ShopIcon", "Textures/ShopIcon2"}};
+	string[,] options = { {"Psyboost", "Increase Attack Speed", "Textures/Psy", "Textures/Psy"},
+	{"Life Flask", "Recover 1 HP", "Textures/Heal", "Textures/Heal"},
+	{"Jet Boots", "Improve Movement Speed", "Textures/Speed", "Textures/Speed"},
+	{"Mind Orb", "Alternate Protection and Attack", "Textures/MindOrb", "Textures/MindOrb"},
+	{"Power Armor", "Reduce Damage Taken by Half", "Textures/Armor", "Textures/Armor"}};
 
 	void Start () {
 	}
