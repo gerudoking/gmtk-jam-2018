@@ -11,17 +11,17 @@ public class Shop : MonoBehaviour {
 	int rectW = 350;
 	int rectH = 200;
 	int sel = -1;
-	int gold = 999;
+	public int gold = 0;
 
 	float margin;
 
 	int[] prices = { 10, 20, 30, 40, 50};
 
 	string[,] options = { {"Psyboost", "Increase Attack Speed", "Textures/ShopIcon", "Textures/ShopIcon2"},
-	{"Life Flask", "Recover HP", "Textures/ShopIcon", "Textures/ShopIcon2"},
+	{"Life Flask", "Recover 1 HP", "Textures/ShopIcon", "Textures/ShopIcon2"},
 	{"Jet Boots", "Improve Movement Speed", "Textures/ShopIcon", "Textures/ShopIcon2"},
-	{"Mind Orb", "", "Textures/ShopIcon", "Textures/ShopIcon2"},
-	{"Power Armor", "Increases Defense", "Textures/ShopIcon", "Textures/ShopIcon2"}};
+	{"Mind Orb", "Alternate Protection and Attack", "Textures/ShopIcon", "Textures/ShopIcon2"},
+	{"Power Armor", "Reduce Damage Taken by Half", "Textures/ShopIcon", "Textures/ShopIcon2"}};
 
 	void Start () {
 	}
@@ -73,6 +73,7 @@ public class Shop : MonoBehaviour {
     						break;
 
     					case 1:
+                            GameObject.Find("Player").GetComponent<PlayerController>().hp++;
     						////Não seta o preço pra -1 para que o player possa comprar novamente
     						break;
 

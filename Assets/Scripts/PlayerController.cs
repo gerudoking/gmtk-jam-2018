@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -14,6 +15,8 @@ public class PlayerController : MonoBehaviour {
     private Timer imunityClock;
     private bool immune = false;
 
+    public Animator animator;
+
     // Use this for initialization
     void Start () {
         imunityClock = new Timer(Timer.TYPE.CRESCENTE, 1.0f);
@@ -21,6 +24,13 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        //GameOver
+        if(hp <= 0) {
+            SceneManager.LoadScene(2);
+        }
+
+        float animSpeed = 0;
+
         horizontalMove = Input.GetAxisRaw("Horizontal") * moveRate;
         verticalMove = Input.GetAxisRaw("Vertical") * moveRate;
 
@@ -29,6 +39,11 @@ public class PlayerController : MonoBehaviour {
         if (imunityClock.Finished()) {
             immune = false;
         }
+
+        if (Mathf.Abs(horizontalMove) > 0 || Mathf.Abs(verticalMove) > 0)
+            animSpeed = 1;
+
+        animator.SetFloat("Speed", animSpeed);
 
         //Trava de Rotação
         transform.rotation = Quaternion.identity;

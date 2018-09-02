@@ -61,6 +61,8 @@ public class EnemyController : MonoBehaviour {
         if(hp <= 0) {
             GameObject.Find("Manager").GetComponent<GeneralController>().waveEnemies.Remove(gameObject);
             GameObject.Find("Manager").GetComponent<GeneralController>().Score++;
+            int randomNumber = UnityEngine.Random.Range(20, 41);
+            GameObject.Find("Shop").GetComponent<Shop>().gold += randomNumber;
             Destroy(gameObject);
         }
 	}
