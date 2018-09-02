@@ -9,7 +9,7 @@ public class Movable : MonoBehaviour {
     private float mMovementSmoothing = .05f;
     private float moveRate = 2000.0f;
     private Vector3 stoppedPos;
-    private bool sliding = false;
+    public bool sliding = false;
 
     private void Start() {
         stoppedPos = transform.position;
@@ -69,7 +69,7 @@ public class Movable : MonoBehaviour {
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        print("AAAAAAAAAA");
+        print("collided");
         Grid grid = GameObject.Find("Map").GetComponent<Grid>();
         sliding = false;
         stoppedPos = grid.GetCellCenterWorld(grid.WorldToCell(transform.position));
@@ -77,6 +77,9 @@ public class Movable : MonoBehaviour {
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         GetComponent<Rigidbody2D>().angularVelocity = 0;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+
+        GameObject.Find("Manager").GetComponent<CustomGrid>().CreateGrid();
+        GameObject.Find("Manager").GetComponent<Pathfinding>().recalculatePaths = true;
     }
 
     private void Move(int dir) {

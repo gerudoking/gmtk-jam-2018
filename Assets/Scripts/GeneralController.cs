@@ -10,13 +10,21 @@ public class GeneralController : MonoBehaviour {
     private Text scoreText;
     [SerializeField]
     private Text waveTime;
+    [SerializeField]
+    private Text life;
     private int score = 0;
+    [SerializeField]
+    private PlayerController player;
 
     private bool onWave = true;
     private Timer waveInterval;
-    private int waveCount;
+    private int waveCount = 0;
     private Pathfinding pf;
 
+    [SerializeField]
+    private List<Transform> spawns;
+    [SerializeField]
+    private GameObject enemy;
 
     public List<GameObject> waveEnemies;
 
@@ -50,17 +58,19 @@ public class GeneralController : MonoBehaviour {
         else {
             waveTime.text = "Next wave in " + waveInterval.GetTime().ToString("n0") + " seconds";
         }
+        life.text = player.hp.ToString("n0");
 
         //Controle de Waves
         if (waveEnemies.Count == 0 && onWave) {
             onWave = false;
             waveInterval.Reset();
+            waveCount++;
         }
 
         if (!waveInterval.Finished() && !onWave) {
             waveInterval.Update();
         }
-        else {
+        else if(!onWave){
             onWave = true;
             StartWave();
         }
@@ -74,11 +84,20 @@ public class GeneralController : MonoBehaviour {
             }
 
             pf.recalculatePaths = false;
+            GetComponent<CustomGrid>().CreateGrid();
         }
 	}
 
     private void StartWave() {
         print("Wave!");
         pf.recalculatePaths = true;
+
+        for (int i = 0; i < waveCount + 3; i++) {
+            int randomNumber = UnityEngine.Random.Range(0, spawns.Count);
+            GameObject aux = (GameObject)Instantiate(enemy, spawns[randomNumber].position, Quaternion.identity);
+            waveEnemies.Add(aux);
+        }
+
+        print("Wave spawned!");
     }
 }
