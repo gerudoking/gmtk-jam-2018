@@ -13,4 +13,4 @@ Throw objects at your enemies with the power of your mind and defend yourself in
 ## Developers
 * Eduardo de Azevedo dos Santos([gerudoking](https://github.com/gerudoking)) as coder
 * André Gustavo Batista de Sousa([AndreGBS](https://github.com/AndreGBS)) as coder and musician
-* Paulo Lopes([Zeitron](https://github.com/Zeitron)) as coder
+* Paulo Mauricio Costa Lopes([Zeitron](https://github.com/Zeitron)) as coder
