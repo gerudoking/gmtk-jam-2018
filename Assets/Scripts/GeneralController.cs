@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GeneralController : MonoBehaviour {
 
@@ -51,6 +52,11 @@ public class GeneralController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(GameObject.Find("Player").GetComponent<PlayerController>().hp<=0)
+        {
+            GlobalVariables.globalScore = score;
+            SceneManager.LoadScene("Scenes/GameOver", LoadSceneMode.Single);
+        }
         scoreText.text = "Score " + score;
         if (onWave) {
             waveTime.text = "DEFEND YOURSELF!";

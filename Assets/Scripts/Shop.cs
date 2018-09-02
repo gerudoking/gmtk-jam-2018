@@ -15,7 +15,7 @@ public class Shop : MonoBehaviour {
 
 	float margin;
 
-	int[] prices = { 10, 20, 30, 40, 50};
+	int[] prices = { 250, 50, 250, 500, 300};
 
 	string[,] options = { {"Psyboost", "Increase Attack Speed", "Textures/ShopIcon", "Textures/ShopIcon2"},
 	{"Life Flask", "Recover 1 HP", "Textures/ShopIcon", "Textures/ShopIcon2"},

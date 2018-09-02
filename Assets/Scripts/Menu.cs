@@ -16,6 +16,7 @@ public class Menu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start(){
+		GlobalVariables.globalScore = 0;
  	}
 
 	// Update is called once per frame

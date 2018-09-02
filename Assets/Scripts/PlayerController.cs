@@ -27,10 +27,6 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //GameOver
-        if(hp <= 0) {
-            SceneManager.LoadScene(2);
-        }
 
         float animSpeed = 0;
 
