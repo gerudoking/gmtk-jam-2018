@@ -9,13 +9,10 @@ public class Menu : MonoBehaviour {
 	int rectH = 160;
 	int yOr = 400;
 	int selected = 0;
-	int state = 0;
-	float timer = 0.0f;
-	float alphaRect = 1.0f;
-	float alphaTitle = 1.0f;
-	float menuSize = 0.0f;
+	int state = 1;
+	float alphaTitle = 0.0f;
 	float [,] options = { { 1.0f, -1.0f}, { 1.0f, -1.0f}, { 1.0f, -1.0f} };
-	string [] optName = { "Play", "Credits", "Quit"};
+	string [] optName = { "PLAY", "LEADERBOARD", "QUIT"};
 
 	// Use this for initialization
 	void Start(){
@@ -39,49 +36,6 @@ public class Menu : MonoBehaviour {
 	void OnGUI()
     {
 
-    	if( state == 0 )
-    	{
-    		timer += 1.0f*Time.deltaTime;
-    		if( timer > 2.0f )
-    		{
-    			alphaTitle -= 0.6f*Time.deltaTime;
-    		}
-    		if( timer > 4.0f )
-    		{
-    			alphaRect -= 1.0f*Time.deltaTime;
-    		}
-    		if( alphaRect < 0.0f )
-    		{
-    			state = 1;
-    			alphaTitle = 0.0f;
-    		}
-
-    		////Title
-    		GUI.skin.label.alignment = TextAnchor.UpperCenter;
-	        GUI.skin.label.font = (Font)Resources.Load("FontTitle");
-	        GUI.contentColor = new Color( 253.0f/255.0f, 120.0f/255.0f, 2.0f/255.0f, 1.0f);
-	        GUI.Label(new Rect( Screen.width/2-400, 60, 400*2, 200), "Main Menu");
-
-			GUI.skin.label.font = (Font)Resources.Load("Font1");
-
-    		GUI.skin.label.alignment = TextAnchor.MiddleCenter;
-
-    		////Rect
-			Texture2D texture = new Texture2D(1, 1);
-			texture.SetPixel(0, 0, new Color( 0, 0, 0, alphaRect));
-			texture.Apply();
-			GUI.skin.box.normal.background = texture;
-			GUI.Box(new Rect( 0, 0, Screen.width, Screen.height), "");
-
-			////Title
-	        GUI.skin.label.font = (Font)Resources.Load("FontTitle");
-	        GUI.contentColor = new Color( 253.0f/255.0f, 120.0f/255.0f, 2.0f/255.0f, alphaTitle);
-	        GUI.Label(new Rect( 0, 0, Screen.width, Screen.height), "Sua Mãe");
-
-	        GUI.skin.label.alignment = TextAnchor.UpperCenter;
-
-    	}
-
     	if ( state == 1 )
     	{
     		if ( alphaTitle < 1.0f )
@@ -90,7 +44,6 @@ public class Menu : MonoBehaviour {
     		}
 
 	    	////Mouse Position
-	        Vector3 p = new Vector3();
 	        Camera  c = Camera.main;
 	        Event   e = Event.current;
 	        Vector2 mousePos = new Vector2();
@@ -120,6 +73,7 @@ public class Menu : MonoBehaviour {
 			 			break;
 
 			 		case 1:
+			 			SceneManager.LoadScene("Scenes/Leaderboard", LoadSceneMode.Single);
 			 			break;
 
 			 		case 2:
@@ -144,6 +98,7 @@ public class Menu : MonoBehaviour {
 			texture.SetPixel(0, 0, new Color( 0, 0, 0, 0.8f));
 			texture.Apply();
 			GUI.skin.box.normal.background = texture;
+			GUI.skin.box.hover.background = texture;
 			GUI.Box(new Rect( Screen.width/2-rectW, Screen.height*(400.0f/720.0f)+rectH/2-(rectH/2)*alphaTitle, rectW*2, rectH*alphaTitle), "");
 
 	        ////Options
