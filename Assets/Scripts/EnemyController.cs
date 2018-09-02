@@ -11,17 +11,21 @@ public class EnemyController : MonoBehaviour {
     private Rigidbody2D r;
     private float moveRate = 5.0f;
     private bool moved = false;
+    private float hp = 2.0f;
+    private Timer damageFade;
+    private bool damageFading = false;
 
 	// Use this for initialization
 	void Start () {
         course = new List<Node>();
         pathF = GameObject.Find("Manager").GetComponent<Pathfinding>();
         r = GetComponent<Rigidbody2D>();
+        damageFade = new Timer(Timer.TYPE.CRESCENTE, 0.5f);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if(course.Count > 0) {
+        if(course != null && course.Count > 0) {
             /*if (!moved) {
                 Vector3 dir = course[0].worldPosition - transform.position;
                 dir = dir.normalized;
@@ -44,5 +48,31 @@ public class EnemyController : MonoBehaviour {
         else {
             course = pathF.FindPath(transform.position, pathF.target.position);
         }
+
+        if (damageFading && !damageFade.Finished()) {
+            damageFade.Update();
+            GetComponent<SpriteRenderer>().color = Color.red;
+        }
+        else {
+            GetComponent<SpriteRenderer>().color = Color.white;
+        }
+
+        //Vida
+        if(hp <= 0) {
+            GameObject.Find("Manager").GetComponent<GeneralController>().waveEnemies.Remove(gameObject);
+            GameObject.Find("Manager").GetComponent<GeneralController>().Score++;
+            Destroy(gameObject);
+        }
 	}
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        print("collided");
+        if (collision.gameObject.tag == "slider") {
+            if (collision.gameObject.GetComponent<Movable>().sliding) {
+                hp--;
+                GetComponent<SpriteRenderer>().color = Color.red;
+                damageFading = true;
+            }
+        }
+    }
 }
